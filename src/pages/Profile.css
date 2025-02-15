@@ -1,0 +1,59 @@
+/* src/pages/Profile.css */
+
+.profile {
+    padding: 20px;
+    max-width: 600px;
+    margin: 0 auto;
+    background: #f3f4f6;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .profile h1 {
+    text-align: center;
+    color: #333;
+  }
+  
+  .profile-card {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .profile-card label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #555;
+  }
+  
+  .profile-card span,
+  .profile-card p {
+    margin-left: 10px;
+  }
+  
+  .profile-card input,
+  .profile-card textarea {
+    width: 100%;
+    padding: 8px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  button {
+    padding: 10px 15px;
+    background-color: #1e90ff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+  }
+  
+  button:hover {
+    background-color: #1c86ee;
+  }
+  

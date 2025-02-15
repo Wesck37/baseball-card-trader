@@ -1,0 +1,79 @@
+/* src/pages/Trades.css */
+.coming-soon-banner {
+  background-color: #f9c74f;
+  color: #333;
+  text-align: center;
+  padding: 10px;
+  margin-bottom: 20px;
+  font-weight: bold;
+  border-radius: 8px;
+}
+
+.trade-card {
+    background: rgba(180, 179, 179, 0.616);
+    border: 1px solid #003df4;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    position: relative;
+  }
+  
+  .trade-card p {
+    margin: 5px 0;
+  }
+  
+  .trade-actions {
+    margin-top: 10px;
+  }
+  
+  .trade-actions button {
+    padding: 8px 12px;
+    margin-right: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .trade-actions button:first-of-type {
+    background-color: #28a745; /* Green for Accept */
+    color: white;
+  }
+  
+  .trade-actions button:first-of-type:hover {
+    background-color: #218838;
+  }
+  
+  .trade-actions button:last-of-type {
+    background-color: #dc3545; /* Red for Reject */
+    color: white;
+  }
+  
+  .trade-actions button:last-of-type:hover {
+    background-color: #c82333;
+  }
+  
+  .propose-trade input[type="text"] {
+    width: 50%; /* Full width of the container */
+    height: 40px; /* Adjust height */
+    padding: 10px; /* Add padding for better spacing */
+    margin-bottom: 10px; /* Add space between inputs */
+    font-size: 16px; /* Larger font for readability */
+    border: 1px solid #ddd; /* Border style */
+    border-radius: 5px; /* Rounded corners */
+    box-sizing: border-box; /* Ensure padding doesn't affect width */
+  }
+  
+  .propose-trade button {
+    padding: 10px 15px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff; /* Blue button */
+    color: white;
+    cursor: pointer;
+  }
+  
+  .propose-trade button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+  }
+  

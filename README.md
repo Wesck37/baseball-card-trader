@@ -1,3 +1,36 @@
+# Baseball Card Trader
+
+An application for buying, selling, and trading baseball cards. Users can register, log in, propose trades, and search for rare cards using the eBay API.
+
+## Table of Contents
+- [Installation](#installation)
+- [Usage](#usage)
+- [Features](#features)
+- [Configuration](#configuration)
+
+## Installation
+
+1. Clone the repo...
+2. Install dependencies...
+3. etc.
+
+## Usage
+
+## Features - 
+**User Authentication**: Register and log in with secure token-based authentication.
+**eBay API Integration**: Search for rare baseball cards from eBay.
+**Trade Proposals**: Propose and manage trades with other users.
+**Profile Management**: Update profile details and track favorite cards.
+
+### Running the Frontend and Backend
+```bash
+cd frontend
+npm start
+cd backend
+npm start
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
