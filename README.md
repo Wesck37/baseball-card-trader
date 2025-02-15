@@ -24,9 +24,9 @@ An application for buying, selling, and trading baseball cards. Users can regist
 
 ### Running the Frontend and Backend
 ```bash
-cd frontend
+to run frontend from base project folder
 npm start
-cd backend
+to run backend cd backend
 npm start
 
 
