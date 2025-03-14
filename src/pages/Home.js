@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { searchBaseballCards } from '../api/ebayApi'; // Your eBay API integration
 import Card from '../components/Card';
 import './Home.css';
+import axios from 'axios';
+
 
 const Home = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -97,49 +99,60 @@ const Home = () => {
   };
 
   // Handle card search
+  // 
+  
+
   const handleSearchCards = async () => {
     const query = `${searchParams.name} ${searchParams.team} ${searchParams.year}`.trim();
+  
+    // 🚨 Ensure query is not empty
     if (!query) {
-      alert('Please enter at least one search parameter.');
+      alert("Please enter at least one search parameter.");
       return;
     }
-    try {
-      const response = await fetch(`${API_URL}/api/ebay/token`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ query }),
-      });
   
-      if (response.ok) {
-        const results = await response.json();
-        setDisplayedCards(results.slice(0, 3)); // Display the first 3 cards
-      } else {
-        const error = await response.json();
-        alert(`Error fetching baseball cards: ${error.message}`);
+    // 🔍 Debugging: Check the formatted API request URL
+    const requestUrl = `${API_URL}/api/ebay/search?q=${encodeURIComponent(query)}`;
+    console.log("Requesting eBay search:", requestUrl);
+  
+    try {
+      const response = await fetch(requestUrl);
+  
+      if (!response.ok) {
+        throw new Error(`Server error: ${response.status} - ${response.statusText}`);
       }
+  
+      const data = await response.json();
+      console.log("Search Results:", data); // Debugging: Check response data
+      setDisplayedCards(data.slice(0, 3)); // Display first 3 cards
     } catch (error) {
-      console.error('Error searching baseball cards:', error);
-      alert('Failed to fetch baseball cards. Please try again later.');
+      console.error("Error searching baseball cards:", error);
+      alert("Failed to fetch baseball cards. Please try again later.");
     }
   };
   
 
+  
   // Fetch cards only when logged in
   useEffect(() => {
-    const fetchCards = async () => {
-      if (!isLoggedIn) return;
+    async function initEbayToken() {
       try {
-        const token = localStorage.getItem('token');
-        const response = await searchBaseballCards(query, token);
-        setSearchResults(response);
+        const response = axios.post (`${API_URL}/api/ebay/token`);
+        console.log (response);
       } catch (error) {
-        console.error('Failed to fetch cards:', error);
+        console.log (error.respone);
       }
-    };
-    fetchCards();
-  }, [isLoggedIn, query]);
+    }
+
+    if (isLoggedIn) {
+      initEbayToken();
+    }
+  }, [isLoggedIn]);
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) setIsLoggedIn(true);
+  }, []);
 
   if (!isLoggedIn) {
     return (
@@ -245,3 +258,22 @@ const Home = () => {
 };
 
 export default Home;
+
+
+
+
+
+
+
+
+// const fetchCards = async () => {
+//   if (!isLoggedIn) return;
+//   try {
+//     const token = localStorage.getItem('token');
+//     const response = await searchBaseballCards(query, token);
+//     setSearchResults(response);
+//   } catch (error) {
+//     console.error('Failed to fetch cards:', error);
+//   }
+// };
+// fetchCards();
