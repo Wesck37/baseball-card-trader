@@ -20,25 +20,6 @@ let tokenData = {
 
 router.post('/ebay/token', async (req, res) => {
   console.log(req.body); 
-  // try {
-  //   const response = await axios.post(
-  //     `${EBAY_API_URL}/identity/v1/oauth2/token`,
-  //     'grant_type=client_credentials&scope=https://api.ebay.com/oauth/api_scope',
-  //     {
-  //       headers: {
-  //         'Content-Type': 'application/x-www-form-urlencoded',
-  //         Authorization: `Basic ${Buffer.from(`${CLIENT_ID}:${CLIENT_SECRET}`).toString('base64')}`,
-  //       },
-  //     }
-  //   );
-  //   return res.json(response.data); // Forward the token data to the frontend
-  // } catch (error) {
-  //   console.error('Error fetching eBay token:', error.response?.data || error.message);
-  //   return res.status(error.response?.status || 500).json({ message: 'Failed to fetch eBay token' });
-  // }
-
-  // Check if token is still valid
-  // if valid retuern early
 
   if (tokenData.token && Date.now() < tokenData.expiresAt) {
     return res.status(200).json({message: "Token still valid."});
@@ -75,42 +56,6 @@ router.post('/ebay/token', async (req, res) => {
     
   }
 });
-
-// router.get("/ebay/search", async (req, res) => {
-// // will get search params from front end
-// // will query api for those items
-// try {
-
-//   if (!req.query.q) {
-//     return res.status(400).json({ message: "Missing search query" });
-//   }
-
-//   const search = encodeURIComponent(req.query.q);
-
-//   console.log("Search param: ", search);
-
-//   const response = await axios.get(`https://api.ebay.com/buy/browse/v1/item_summary/search?q=${search}&limit=50`, {
-//     headers:  {
-//       "Authorization": `Bearer ${tokenData.token}`,
-//       "Content-Type": "application/json"
-//     }
-//   });
-
-//   console.log(response);
-
-//   return res.status(200).json({message: "eBay search okay"});
-
-// } catch (error) {
-//   console.log (error);
-//   return res.status (400).json({message: "Search failed"}); 
-// }
-
-// });
-
-
-
-
-// 
 
 router.get("/ebay/search", async (req, res) => {
   try {
